@@ -1,3 +1,6 @@
+load("//defs.bzl", "global_compiler_flags")
+load("//defs.bzl", "global_linker_flags")
+
 cxx_binary(
     name = "PenumbraOverture",
     headers = [
@@ -131,9 +134,10 @@ cxx_binary(
     deps = [
         "//HPL1Engine:HPL1Engine",
     ],
-    compiler_flags = [
+    compiler_flags = global_compiler_flags + [
         "-isystem",
         "/opt/homebrew/include",
     ],
+    linker_flags = global_linker_flags,
     link_style = "static",
 )
